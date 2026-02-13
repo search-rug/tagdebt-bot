@@ -1,5 +1,7 @@
 {
-    "plugin": ["plugins.satd_li_2022.model"],
+    "plugins": [
+        "plugins.satd_li_2022.model"
+    ],
     "models": [
         {
             "type": "Model1_IssueTracker_Li2022_ESEM",

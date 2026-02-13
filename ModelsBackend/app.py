@@ -15,7 +15,7 @@ class ModelResponse(BaseModel):
 
 with open("config.json") as f:
     data = json.load(f)
-    loader.load_plugin(data["plugin"])
+    loader.load_plugin(data["plugins"])
 
     models = {model_data["name"]: factory.create_model(model_data) for model_data in data["models"]}
 
