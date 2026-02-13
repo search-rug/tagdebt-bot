@@ -1,13 +1,13 @@
 {
-    "plugin": ["plugins.satd.SATD_Detector.model"],
+    "plugin": ["plugins.satd_li_2022.model"],
     "models": [
         {
             "type": "Model1_IssueTracker_Li2022_ESEM",
             "name": "Model1_IssueTracker_Li2022_ESEM",
             "parameters": {
-                "weight_file": "plugins/satd/SATD_Detector/data/weights.hdf5",
-                "word_embedding_file": "plugins/satd/SATD_Detector/data/embeddings.bin"
+                "weight_file": "plugins/satd_li_2022/data/weights.hdf5",
+                "word_embedding_file": "plugins/satd_li_2022/data/embeddings.bin"
             }
         }
     ]
-}  
+}

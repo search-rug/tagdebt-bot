@@ -21,7 +21,7 @@ TagDebt is a tool designed to automate the labeling of GitHub issues using machi
   - `bot_email.secret`: containing the email address and the email password used by the bot to send notifications, structured as follows:
     * 1st line for the bot email address
     * 2nd line for the bot email password (app password, not the usual email password. For Google Accounts, find more information [here](https://support.google.com/mail/answer/185833?hl=en))
-3. Download the [weight files](https://zenodo.org/records/7821209) required by the bot's ML model and add them to the local<br> `/issue-classification-bot-2/ModelsBackend/plugins/satd/SATD_Detector/data` directory as follows:
+3. Download the [weight files](https://zenodo.org/records/7821209) required by the bot's ML model and add them to the local<br> `/issue-classification-bot-2/ModelsBackend/plugins/satd_li_2022/data` directory as follows:
     * Rename `fasttext_issue_300.bin` to `embeddings.bin`
     * Rename `satd_detector_for_issues.hdf5` to `weights.hdf5`
 4. Navigate to the root directory `/issue-classification-bot-2` containing the `docker-compose.yml` file.
