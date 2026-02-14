@@ -7,13 +7,14 @@ For technical details and deployment strategies, see [ARCHITECTURE.md](ARCHITECT
 
 ## Quick Start
 1.  **GitHub App**: Place your `bot_key.pem` in `/Bot`.
-2.  **Secrets**: Create `Bot/bot_email.secret` with the email address on the 1st line and the app password on the 2nd.
-3.  **Model Data**: (If using local Li 2022 model) Download [weight files](https://zenodo.org/records/7821209) to `ModelsBackend/plugins/satd_li_2022/data/`. Rename them to `embeddings.bin` and `weights.hdf5`.
-4.  **Launch**:
+2.  **Configuration**: Create `config.json` in both `/Bot` and `/ModelsBackend` by copying the respective `config.json.example` files and customizing them.
+3.  **Secrets**: Create `Bot/bot_email.secret` with the email address on the 1st line and the app password on the 2nd.
+4.  **Model Data**: (If using local Li 2022 model) Download [weight files](https://zenodo.org/records/7821209) to `ModelsBackend/plugins/satd_li_2022/data/`. Rename them to `embeddings.bin` and `weights.hdf5`.
+5.  **Launch**:
     ```bash
     docker compose up
     ```
-5.  **Webhooks**: Start Smee to forward webhooks:
+6.  **Webhooks**: Start Smee to forward webhooks:
     ```bash
     smee --url https://smee.io/Wpx6fSOaWjEaOK --path /webhook --port 5001
     ```

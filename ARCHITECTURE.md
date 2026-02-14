@@ -59,6 +59,10 @@ Run `docker compose watch` to automatically synchronize code modifications into 
 
 ## Detailed Configuration Reference
 
+Configuration is managed via `config.json` files in the service directories.
+
+**Note**: You should create these files by copying the provided `config.json.example` templates.
+
 ### Bot Configuration (`Bot/config.json`)
 
 The bot can be configured globally via `Bot/config.json` or on a per-repository basis by placing a `Bot/config.json` file in the target repository.

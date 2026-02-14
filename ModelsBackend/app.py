@@ -4,6 +4,10 @@ from typing import Dict, Optional
 from fastapi import FastAPI, HTTPException, Body
 from pydantic import BaseModel
 from model import factory, loader
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
 
 app = FastAPI()
 
@@ -12,6 +16,10 @@ class ModelRequest(BaseModel):
 
 class ModelResponse(BaseModel):
     label: Optional[str] = None
+
+if not os.path.exists("config.json"):
+    print("ERROR: config.json not found! Please create it from config.json.example.", flush=True)
+    exit(1)
 
 with open("config.json") as f:
     data = json.load(f)

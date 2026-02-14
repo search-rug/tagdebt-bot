@@ -215,9 +215,13 @@ def bot():
         # Decode the file
         config = json.loads(base64.b64decode(config_file.content).decode("utf-8"))
     except:
-        with open("config.json", "r") as f:
-            config = json.load(f)
-            print("Using config file from the local Bot directory as it is not present in the repository", flush=True)
+        if os.path.exists("config.json"):
+            with open("config.json", "r") as f:
+                config = json.load(f)
+                print("Using config file from the local Bot directory as it is not present in the repository", flush=True)
+        else:
+            print("ERROR: config.json not found! Please create it from config.json.example.", flush=True)
+            abort(500)
 
     if payload_type == "issue_comment":
         return handle_issue_comment_event(repo, payload, config)
