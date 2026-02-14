@@ -103,9 +103,9 @@ The bot replaces these with actual data at runtime:
 ---
 
 ### Models Backend Configuration (`ModelsBackend/config.json`)
-- `plugins`: List of module paths to load (e.g., `["plugins.satd_li_2022.model"]`).
+- `plugins`: List of module paths to load (e.g., `["plugins.satd_li_2022.model", "plugins.satd_llm_instructor.model"]`).
 - `models`: List of instance definitions:
-    - `type`: Registered plugin type (e.g., `Model1_IssueTracker_Li2022_ESEM`).
+    - `type`: Registered plugin type (e.g., `SATD_LLM_Instructor`).
     - `name`: Unique identifier for the instance (exposed at `/models/{name}`).
     - `parameters`: Key-value pairs passed to the model's constructor.
 

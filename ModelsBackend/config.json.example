@@ -1,6 +1,7 @@
 {
     "plugins": [
-        "plugins.satd_li_2022.model"
+        "plugins.satd_li_2022.model",
+        "plugins.satd_llm_instructor.model"
     ],
     "models": [
         {
@@ -9,6 +10,30 @@
             "parameters": {
                 "weight_file": "plugins/satd_li_2022/data/weights.hdf5",
                 "word_embedding_file": "plugins/satd_li_2022/data/embeddings.bin"
+            }
+        },
+        {
+            "type": "SATD_LLM_Instructor",
+            "name": "Gemini_SATD_Detector",
+            "parameters": {
+                "model_name": "google/gemini-2.5-flash",
+                "prompt_file": "plugins/satd_llm_instructor/prompts.json"
+            }
+        },
+        {
+            "type": "SATD_LLM_Instructor",
+            "name": "OpenAI_SATD_Detector",
+            "parameters": {
+                "model_name": "openai/gpt-5-nano",
+                "prompt_file": "plugins/satd_llm_instructor/prompts.json"
+            }
+        },
+        {
+            "type": "SATD_LLM_Instructor",
+            "name": "Anthropic_SATD_Detector",
+            "parameters": {
+                "model_name": "anthropic/claude-3-haiku",
+                "prompt_file": "plugins/satd_llm_instructor/prompts.json"
             }
         }
     ]
