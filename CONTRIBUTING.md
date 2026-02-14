@@ -46,7 +46,7 @@ The system distinguishes between **Plugins** (Blueprints) and **Models** (Instan
 A plugin is a Python module that defines a model implementation. 
 - **Location**: Typically placed in `plugins/`.
 - **Requirement**: Must have an `initialize()` function that calls `model.factory.register_model(type_name, class_reference)`.
-- **Registration**: The module path (e.g., `plugins.my_new_plugin.model`) must be added to the `"plugins"` list in `config.json`.
+- **Registration**: The module path (e.g., `plugins.satd_li_2022.model`) must be added to the `"plugins"` list in `config.json`.
 
 ##### Models (The Instances)
 Models are specific configurations of a plugin.

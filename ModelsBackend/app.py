@@ -5,6 +5,7 @@ from fastapi import FastAPI, HTTPException, Body
 from pydantic import BaseModel
 from model import factory, loader
 from dotenv import load_dotenv
+import os
 
 # Load environment variables from .env
 load_dotenv()
