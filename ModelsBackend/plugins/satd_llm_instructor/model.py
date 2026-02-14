@@ -90,7 +90,8 @@ class SATD_LLM_Detector:
                 classification = client.responses.create(
                     input=full_input,
                     response_model=TechDebtClassification,
-                    max_retries=2
+                    max_retries=2,
+                    max_tokens=1000 # Safeguard against infinity loops/long outputs
                 )
             else:
                 # Use standard create method for Gemini/Anthropic
@@ -100,7 +101,8 @@ class SATD_LLM_Detector:
                 classification = client.create(
                     messages=messages,
                     response_model=TechDebtClassification,
-                    max_retries=2
+                    max_retries=2,
+                    max_tokens=1000 # Safeguard against infinity loops/long outputs
                 )
 
             return "SATD" if classification.contains_technical_debt else "non-SATD"
