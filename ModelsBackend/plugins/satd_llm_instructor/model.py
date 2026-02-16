@@ -2,6 +2,7 @@ import os
 import json
 import copy
 import logging
+import traceback
 from typing import List, Optional
 from pydantic import BaseModel, Field
 import instructor
@@ -82,7 +83,6 @@ class SATD_LLM_Detector:
 
         try:
             if provider == "openai":
-                # Use Responses API for OpenAI
                 system_content = self.prompt_messages[0]['content']
                 user_instruction = self.prompt_messages[1]['content']
                 full_input = f"{system_content}\n\nTask: {user_instruction}\n\nIssue Text:\n{text}"
@@ -91,10 +91,9 @@ class SATD_LLM_Detector:
                     input=full_input,
                     response_model=TechDebtClassification,
                     max_retries=2,
-                    max_tokens=1000 # Safeguard against infinity loops/long outputs
+                    max_tokens=4000
                 )
             else:
-                # Use standard create method for Gemini/Anthropic
                 messages = copy.deepcopy(self.prompt_messages)
                 messages[-1]['content'] += f"\n\nText: {text}"
                 
@@ -102,12 +101,16 @@ class SATD_LLM_Detector:
                     messages=messages,
                     response_model=TechDebtClassification,
                     max_retries=2,
-                    max_tokens=1000 # Safeguard against infinity loops/long outputs
+                    max_tokens=4000
                 )
 
             return "SATD" if classification.contains_technical_debt else "non-SATD"
         except Exception as e:
-            logging.error(f"LLM call for '{self.model_name}' failed: {e}")
+            logging.error(f"LLM call for '{self.model_name}' failed.")
+            logging.error(f"Error Type: {type(e).__name__}")
+            logging.error(f"Error Message: {str(e)}")
+            if hasattr(e, 'last_response'):
+                logging.error(f"Raw Response: {e.last_response}")
             return "error"
 
 def initialize() -> None:
